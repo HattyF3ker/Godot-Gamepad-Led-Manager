@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://r5b5to7jvuet"]
+
+[ext_resource type="Script" uid="uid://dc1ksebci2knx" path="res://example.gd" id="1_2jas5"]
+
+[node name="Example" type="Control" unique_id=629216423]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2jas5")
+
+[node name="Container" type="HBoxContainer" parent="." unique_id=541585255]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 472.0
+offset_right = 291.0
+offset_bottom = 570.0
+
+[node name="OnButton" type="Button" parent="Container" unique_id=253280003]
+layout_mode = 2
+text = "Turn Led On"
+
+[node name="OffButton" type="Button" parent="Container" unique_id=1434074989]
+layout_mode = 2
+text = "Turn Led Off"
+
+[node name="RContainer" type="HBoxContainer" parent="." unique_id=1809146885]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 472.0
+offset_right = 870.0
+offset_bottom = 570.0
+
+[node name="ROnButton" type="Button" parent="RContainer" unique_id=361249468]
+layout_mode = 2
+text = "Activate Rainbow Effect"
+
+[node name="POnButton" type="Button" parent="RContainer" unique_id=894486807]
+layout_mode = 2
+text = "Activate Pulse Effect"
+
+[node name="ROffButton" type="Button" parent="RContainer" unique_id=945220658]
+layout_mode = 2
+text = "Deactivate Effect"
+
+[node name="GamepadSelector" type="OptionButton" parent="." unique_id=2054048550]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 49.00001
+offset_right = 667.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 30
+
+[node name="LedColor" type="ColorRect" parent="." unique_id=203845025]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 296.0
+offset_right = 665.0
+offset_bottom = 336.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CurrentLedColor" type="Label" parent="." unique_id=50424805]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 269.0
+offset_right = 535.0
+offset_bottom = 292.0
+text = "Current Led Color"
+
+[node name="ColorPicker" type="ColorPicker" parent="." unique_id=1849087952]
+layout_mode = 0
+offset_left = 812.0
+offset_top = 90.0
+offset_right = 1110.0
+offset_bottom = 382.0
+edit_alpha = false
+edit_intensity = false
+can_add_swatches = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="SelectedGamepad" type="Label" parent="." unique_id=582727316]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 149.0
+offset_right = 262.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 24
+text = "Selected Gamepad: None"
+
+[node name="HasLed" type="Label" parent="." unique_id=154314005]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 189.0
+offset_right = 262.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 24
+text = "Has Led: Unknown"
+
+[connection signal="pressed" from="Container/OnButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Container/OffButton" to="." method="_off_button_pressed"]
+[connection signal="pressed" from="RContainer/ROnButton" to="." method="_r_on_button_pressed"]
+[connection signal="pressed" from="RContainer/POnButton" to="." method="_p_on_button_pressed"]
+[connection signal="pressed" from="RContainer/ROffButton" to="." method="_r_off_button_pressed"]
+[connection signal="item_selected" from="GamepadSelector" to="." method="_on_gamepad_selector_item_selected"]
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
